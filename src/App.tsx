@@ -1,38 +1,41 @@
-import Blob from "./components/ui/Blob/index.tsx";
 import Footer from "./Footer/Footer.tsx";
 import Header from "./Header/Header.tsx";
-import MagneticText from "./components/ui/MagneticText/index.tsx";
+import {
+  Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider,
+} from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import Home from "./Home/index.tsx";
+import Writeups from "./Writeups/index.tsx";
 
-function App() {
-  const githubImageUrl = "https://github.com/securesvet.png";
-  const githubUrl = "https://github.com/securesvet";
+const Layout = () => {
   return (
     <>
       <Header />
-      <div className="flex justify-center items-center h-screen">
-        <Greeting />
-        <div className="w-xs aspect-square hover:opacity-80 transition-opacity duration-300">
-          <a href={githubUrl} target="_blank">
-            <Blob imageUrl={githubImageUrl} />
-          </a>
-        </div>
-      </div>
-      <div className="h-screen"></div>
+      <main style={{ marginTop: "var(--header-height)" }}>
+        <Outlet />
+      </main>
       <Footer />
     </>
   );
-}
-
-const Greeting = () => {
-  return (
-    <>
-      <h1 className="text-3xl">
-        Hi, my name is
-        <br /> <MagneticText text="Sviatoslav" />{" "}
-        <MagneticText text="Murzin" startBold />
-      </h1>
-    </>
-  );
 };
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="/writeups" element={<Writeups />} />
+      </Route>
+    </>
+  ),
+  { basename: "/writeups/" }
+);
+
+function App() {
+  return <RouterProvider router={router} />;
+}
 
 export default App;

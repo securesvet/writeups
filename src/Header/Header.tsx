@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const headerRef = useRef<HTMLDivElement>(null);
@@ -32,7 +33,7 @@ const Header = () => {
       ref={headerRef}
     >
       <header
-        className={`relative flex items-center justify-center w-[90vw] h-16 px-6 text-white transition-all duration-500 ease-out
+        className={`relative flex items-center justify-center w-[90vw] h-16 px-6 text-white transition-all duration-500 ease-out rounded-2xl
           ${
             isHeaderLitUp
               ? "shadow-[0px_5px_30px_rgba(255,255,255,0.1)]"
@@ -42,19 +43,24 @@ const Header = () => {
       >
         <ul className="flex gap-8 justify-between items-center px-2 text-md font-medium">
           <li>
-            <a href="/writeups" className="hover:underline">
+            <Link to="/writeups" className="hover:underline">
               Writeups
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/projects" className="hover:underline">
+            <Link to="/" className="hover:underline">
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link to="/projects" className="hover:underline">
               Projects
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/resume" className="hover:underline">
+            <Link to="/resume.pdf" className="hover:underline" target="_blank">
               Resume
-            </a>
+            </Link>
           </li>
         </ul>
       </header>

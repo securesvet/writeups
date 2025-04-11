@@ -5,7 +5,7 @@ type MagneticTextType = {
   startBold?: boolean;
 };
 
-const MagneticText = ({ text, startBold = false}: MagneticTextType) => {
+const MagneticText = ({ text, startBold = false }: MagneticTextType) => {
   const maxWeight = 900;
   const minWeight = 400;
   const containerRef = useRef<HTMLDivElement>(null);
@@ -13,7 +13,7 @@ const MagneticText = ({ text, startBold = false}: MagneticTextType) => {
     new Array(text.length).fill(startBold ? maxWeight : minWeight)
   );
 
-  const handleMouseMove = (e: MouseEvent) => {
+  const handleInteractionMove = (x: number, y: number) => {
     if (!containerRef.current) return;
 
     const letters = containerRef.current.querySelectorAll("span");
@@ -21,9 +21,8 @@ const MagneticText = ({ text, startBold = false}: MagneticTextType) => {
 
     letters.forEach((span) => {
       const rect = span.getBoundingClientRect();
-      // Calculate distance from center
-      const dx = e.clientX - (rect.left + rect.width / 2);
-      const dy = e.clientY - (rect.top + rect.height / 2);
+      const dx = x - (rect.left + rect.width / 2);
+      const dy = y - (rect.top + rect.height / 2);
       const dist = Math.sqrt(dx * dx + dy * dy);
       const multiplier = 5;
 
@@ -36,20 +35,36 @@ const MagneticText = ({ text, startBold = false}: MagneticTextType) => {
     setWeights(newWeights);
   };
 
+  const handleMouseMove = (e: MouseEvent) => {
+    handleInteractionMove(e.clientX, e.clientY);
+  };
+
+  const handleTouchMove = (e: TouchEvent) => {
+    const touch = e.touches[0];
+    if (touch) {
+      handleInteractionMove(touch.clientX, touch.clientY);
+    }
+  };
+
   useEffect(() => {
-    const handleLeave = () => {
+    const container = containerRef.current;
+    const resetWeights = () =>
       setWeights(
         new Array(text.length).fill(startBold ? maxWeight : minWeight)
       );
-    };
 
-    const container = containerRef.current;
     container?.addEventListener("mousemove", handleMouseMove);
-    container?.addEventListener("mouseleave", handleLeave);
+    container?.addEventListener("mouseleave", resetWeights);
+    container?.addEventListener("touchmove", handleTouchMove);
+    container?.addEventListener("touchend", resetWeights);
+    container?.addEventListener("touchcancel", resetWeights);
 
     return () => {
       container?.removeEventListener("mousemove", handleMouseMove);
-      container?.removeEventListener("mouseleave", handleLeave);
+      container?.removeEventListener("mouseleave", resetWeights);
+      container?.removeEventListener("touchmove", handleTouchMove);
+      container?.removeEventListener("touchend", resetWeights);
+      container?.removeEventListener("touchcancel", resetWeights);
     };
   }, [text]);
 
@@ -58,8 +73,9 @@ const MagneticText = ({ text, startBold = false}: MagneticTextType) => {
       ref={containerRef}
       className="flex gap-[0.05em] cursor-pointer"
       style={{
-        fontFamily: '"Inter var", sans-serif', // Make sure variable font is loaded
-        userSelect: "text", // Ensure the text is selectable
+        fontFamily: '"Inter var", sans-serif',
+        userSelect: "text",
+        WebkitTapHighlightColor: "transparent", // removes tap highlight on mobile
       }}
     >
       {text.split("").map((char, i) => (
@@ -67,7 +83,7 @@ const MagneticText = ({ text, startBold = false}: MagneticTextType) => {
           key={i}
           style={{
             fontVariationSettings: `"wght" ${weights[i] || 400}`,
-            transition: "font-variation-settings 0.3s ease", // Smooth transition
+            transition: "font-variation-settings 0.3s ease",
           }}
         >
           {char}

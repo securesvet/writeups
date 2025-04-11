@@ -4,7 +4,7 @@ const Footer = () => {
   const [isFooterLitUp, setIsFooterLitUp] = useState(false);
 
   return (
-    <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
+    <div className="grid place-items-center bottom-4 z-50">
       <footer
         className={`relative mx-auto mt-20 w-[90vw] h-16 px-6 text-white rounded-2xl backdrop-blur-md transition-all duration-500 ease-out p-10
         ${
