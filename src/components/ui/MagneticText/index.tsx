@@ -3,10 +3,9 @@ import { useRef, useEffect, useState } from "react";
 type MagneticTextType = {
   text: string;
   startBold?: boolean;
-  hint?: boolean;
 };
 
-const MagneticText = ({ text, startBold = false, hint }: MagneticTextType) => {
+const MagneticText = ({ text, startBold = false}: MagneticTextType) => {
   const maxWeight = 900;
   const minWeight = 400;
   const containerRef = useRef<HTMLDivElement>(null);
