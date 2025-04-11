@@ -14,7 +14,7 @@ const Layout = () => {
   return (
     <>
       <Header />
-      <main style={{ marginTop: "var(--header-height)" }}>
+      <main style={{ minHeight: "var(--screen-no-header)", padding: "var(--main-content-padding)"  }}>
         <Outlet />
       </main>
       <Footer />
