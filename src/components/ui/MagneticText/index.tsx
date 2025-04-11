@@ -7,7 +7,7 @@ type MagneticTextType = {
 
 const MagneticText = ({ text, startBold = false }: MagneticTextType) => {
   const maxWeight = 900;
-  const minWeight = 400;
+  const minWeight = 200;
   const containerRef = useRef<HTMLDivElement>(null);
   const [weights, setWeights] = useState<number[]>(
     new Array(text.length).fill(startBold ? maxWeight : minWeight)
