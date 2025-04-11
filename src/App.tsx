@@ -1,5 +1,5 @@
 import Footer from "./Footer/Footer.tsx";
-import Header from "./Header/Header.tsx";
+import Header from "./Header/index.tsx";
 import {
   Route,
   createBrowserRouter,
@@ -14,7 +14,12 @@ const Layout = () => {
   return (
     <>
       <Header />
-      <main style={{ minHeight: "var(--screen-no-header)", padding: "var(--main-content-padding)"  }}>
+      <main
+        style={{
+          minHeight: "var(--screen-no-header)",
+          padding: "var(--main-content-padding)",
+        }}
+      >
         <Outlet />
       </main>
       <Footer />
