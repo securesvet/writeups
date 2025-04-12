@@ -73,7 +73,7 @@ const MagneticText = ({ text, startBold = false }: MagneticTextType) => {
       ref={containerRef}
       className="flex gap-[0.05em] cursor-pointer"
       style={{
-        fontFamily: '"Inter var", sans-serif',
+        fontFamily: '"InterVariable", sans-serif',
         userSelect: "text",
         WebkitTapHighlightColor: "transparent", // removes tap highlight on mobile
       }}
