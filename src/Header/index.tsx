@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Header = () => {
@@ -37,7 +37,7 @@ const Header = () => {
     },
     {
       name: "Resume",
-      path: "/resume.pdf",
+      path: "/resume",
     },
   ];
 
@@ -47,7 +47,7 @@ const Header = () => {
       ref={headerRef}
     >
       <header
-        className={`block h-16 w-[372px] text-white transition-all duration-500 ease-out rounded-2xl backdrop-blur-md shadow-[0px_5px_30px_rgba(0,0,0,0.1)] border-[1px] border-[rgba(255,255,255,0.3)]
+        className={`block h-16 w-[372px] text-white transition-all duration-500 ease-out rounded-2xl backdrop-blur-md shadow-[0px_5px_15px_rgba(255,255,255,0.05)] border-[1px] border-[rgba(255,255,255,0.3)]
         ${isHeaderVisible ? "opacity-100 " : "-translate-y-full opacity-0"}
         `}
       >
@@ -61,9 +61,7 @@ const Header = () => {
                 >
                   {item.name}
                 </Link>
-                <div>
-
-                </div>
+                <div></div>
               </li>
             ))}
           </ul>
@@ -73,4 +71,10 @@ const Header = () => {
   );
 };
 
+const LayoutHeader = ({ children }: { children: ReactNode }) => {
+  return <div className="mt-[var(--header-height)]">{children}</div>;
+};
+
 export default Header;
+
+export { LayoutHeader };

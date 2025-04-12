@@ -1,4 +1,4 @@
-import Footer from "./Footer/Footer.tsx";
+import Footer from "./Footer/index.tsx";
 import Header from "./Header/index.tsx";
 import {
   Route,
@@ -7,19 +7,15 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { Outlet } from "react-router-dom";
-import Home from "./Home/index.tsx";
-import Writeups from "./Writeups/index.tsx";
+import Home from "./pages/Home/index.tsx";
+import Writeups from "./pages/Writeups/index.tsx";
+import Resume from "./pages/Resume/index.tsx";
 
 const Layout = () => {
   return (
     <>
       <Header />
-      <main
-        style={{
-          minHeight: "var(--screen-no-header)",
-          padding: "var(--main-content-padding)",
-        }}
-      >
+      <main className="min-h-[var(--screen-no-header)] p-[var(--main-content-padding)]">
         <Outlet />
       </main>
       <Footer />
@@ -33,6 +29,7 @@ const router = createBrowserRouter(
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="/writeups" element={<Writeups />} />
+        <Route path="/resume" element={<Resume />} />
       </Route>
     </>
   ),

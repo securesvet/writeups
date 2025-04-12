@@ -25,7 +25,7 @@ const Projects = () => {
   ];
   return (
     <>
-      <h1 className="text-3xl text-center font-bold mb-10">Projects</h1>
+      <h1 className="text-center font-bold mb-10">Projects</h1>
       <div className="columns-2 sm:columns-3 md:columns-4 gap-4 ">
         {data.map((el) => (
           <div className="flex flex-col justify-center items-center grow-1">
