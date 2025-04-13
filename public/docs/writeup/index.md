@@ -1,3 +1,0 @@
-# Writeup
-
-HELLO EVERYBODY
