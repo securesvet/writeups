@@ -72,7 +72,7 @@ const Header = () => {
 };
 
 const LayoutHeader = ({ children }: { children: ReactNode }) => {
-  return <div className="mt-[var(--header-height)]">{children}</div>;
+  return <div className="pt-[var(--header-height)]">{children}</div>;
 };
 
 export default Header;

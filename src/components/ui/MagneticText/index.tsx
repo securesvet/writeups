@@ -1,13 +1,23 @@
-import { useRef, useEffect, useState } from "react";
+import {
+  useRef,
+  useState,
+  type MouseEvent,
+  type TouchEvent,
+} from "react";
 
 type MagneticTextType = {
   text: string;
+  maxWeight?: number;
+  minWeight?: number;
   startBold?: boolean;
 };
 
-const MagneticText = ({ text, startBold = false }: MagneticTextType) => {
+const MagneticText = ({
+  text,
+  startBold = false,
+}: MagneticTextType) => {
   const maxWeight = 900;
-  const minWeight = 200;
+  const minWeight = 100;
   const containerRef = useRef<HTMLDivElement>(null);
   const [weights, setWeights] = useState<number[]>(
     new Array(text.length).fill(startBold ? maxWeight : minWeight)
@@ -24,7 +34,7 @@ const MagneticText = ({ text, startBold = false }: MagneticTextType) => {
       const dx = x - (rect.left + rect.width / 2);
       const dy = y - (rect.top + rect.height / 2);
       const dist = Math.sqrt(dx * dx + dy * dy);
-      const multiplier = 5;
+      const multiplier = text.length;
 
       const weight = startBold
         ? Math.min(minWeight + multiplier * dist, maxWeight)
@@ -35,38 +45,19 @@ const MagneticText = ({ text, startBold = false }: MagneticTextType) => {
     setWeights(newWeights);
   };
 
-  const handleMouseMove = (e: MouseEvent) => {
+  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
     handleInteractionMove(e.clientX, e.clientY);
   };
 
-  const handleTouchMove = (e: TouchEvent) => {
+  const handleTouchMove = (e: TouchEvent<HTMLDivElement>) => {
     const touch = e.touches[0];
     if (touch) {
       handleInteractionMove(touch.clientX, touch.clientY);
     }
   };
 
-  useEffect(() => {
-    const container = containerRef.current;
-    const resetWeights = () =>
-      setWeights(
-        new Array(text.length).fill(startBold ? maxWeight : minWeight)
-      );
-
-    container?.addEventListener("mousemove", handleMouseMove);
-    container?.addEventListener("mouseleave", resetWeights);
-    container?.addEventListener("touchmove", handleTouchMove);
-    container?.addEventListener("touchend", resetWeights);
-    container?.addEventListener("touchcancel", resetWeights);
-
-    return () => {
-      container?.removeEventListener("mousemove", handleMouseMove);
-      container?.removeEventListener("mouseleave", resetWeights);
-      container?.removeEventListener("touchmove", handleTouchMove);
-      container?.removeEventListener("touchend", resetWeights);
-      container?.removeEventListener("touchcancel", resetWeights);
-    };
-  }, [text]);
+  const resetWeights = () =>
+    setWeights(new Array(text.length).fill(startBold ? maxWeight : minWeight));
 
   return (
     <div
@@ -75,8 +66,13 @@ const MagneticText = ({ text, startBold = false }: MagneticTextType) => {
       style={{
         fontFamily: '"InterVariable", sans-serif',
         userSelect: "text",
-        WebkitTapHighlightColor: "transparent", // removes tap highlight on mobile
+        WebkitTapHighlightColor: "transparent",
       }}
+      onMouseMove={handleMouseMove}
+      onTouchMove={handleTouchMove}
+      onMouseLeave={resetWeights}
+      onTouchEnd={resetWeights}
+      onTouchCancel={resetWeights}
     >
       {text.split("").map((char, i) => (
         <span
