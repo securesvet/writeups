@@ -11,7 +11,7 @@ type DirectoryWithMarkdown = {
   description: string;
 };
 
-const basePath = "./public/docs/";
+const basePath = "./docs/";
 
 const markdownDirectories = Deno.readDir(basePath);
 
