@@ -12,6 +12,7 @@ dist
 dist-ssr
 .vite
 *.local
+.tw-patch/
 .react-router/
 public_local/
 fresh/

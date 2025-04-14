@@ -5,13 +5,14 @@
     "prepare": {
       "dependencies": ["scriptbuild", "pdfresume"]
     },
+    "tw-patch": "npx is-ci && npx tw-patch install && npx tw-patch extract",
     "dev": {
       "command": "deno run -A --node-modules-dir npm:vite",
       "dependencies": ["prepare"]
     },
     "build": {
       "command": "deno run -A --node-modules-dir npm:vite build",
-      "dependencies": ["prepare"]
+      "dependencies": ["prepare", "tw-patch"]
     },
     "preview": "deno run -A --node-modules-dir npm:vite preview",
     "serve": "deno run --allow-net --allow-read jsr:@std/http@1/file-server dist/"
