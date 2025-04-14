@@ -1,4 +1,9 @@
 // Building writeups JSON in order to use it statically
+
+// import createResumePDF from "./resume.ts";
+
+// await createResumePDF();
+
 type ResultJSON = {
   directories: DirectoryWithMarkdown[];
 };

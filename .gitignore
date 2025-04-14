@@ -15,6 +15,7 @@ dist-ssr
 .react-router/
 public_local/
 fresh/
+src/writeups.json
 
 # Editor directories and files
 .vscode/

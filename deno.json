@@ -1,13 +1,14 @@
 {
   "tasks": {
-    "writeupsjson": "deno run -RW ./scripts/index.ts",
+    "scriptbuild": "deno run -RW ./scripts/index.ts",
+    "pdfresume": "deno run -RW ./scripts/index.ts",
     "dev": {
       "command": "deno run -A --node-modules-dir npm:vite",
-      "dependencies": ["writeupsjson"]
+      "dependencies": ["scriptbuild"]
     },
     "build": {
       "command": "deno run -A --node-modules-dir npm:vite build",
-      "dependencies": ["writeupsjson"]
+      "dependencies": ["scriptbuild"]
     },
     "preview": "deno run -A --node-modules-dir npm:vite preview",
     "serve": "deno run --allow-net --allow-read jsr:@std/http@1/file-server dist/"
