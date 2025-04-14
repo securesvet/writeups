@@ -33,7 +33,7 @@ const Header = () => {
     },
     {
       name: "Projects",
-      path: "/#projects",
+      path: "/projects",
     },
     {
       name: "Resume",

@@ -1,48 +1,54 @@
 import mursvet from "/projects/mursvet.png";
+import heroed from "/projects/heroed.png";
+import tbank from "/projects/tbank.png";
+import { LayoutHeader } from "../../Header/index.tsx";
 
 const Projects = () => {
   const data = [
     {
       name: "mursvet site",
       image: mursvet,
+      href: "https://github.com/securesvet/mursvet",
     },
     {
-      name: "mursvet site",
-      image: mursvet,
+      name: "Heroed",
+      image: heroed,
+      href: "https://github.com/securesvet/heroed",
     },
     {
-      name: "mursvet site",
-      image: mursvet,
-    },
-    {
-      name: "mursvet site",
-      image: mursvet,
-    },
-    {
-      name: "mursvet site",
-      image: mursvet,
+      name: "Design T-Bank",
+      image: tbank,
+      href: "https://design.tbank.ru",
     },
   ];
+
   return (
-    <>
-      <h1 className="text-center font-bold mb-10">Projects</h1>
-      <div className="columns-2 sm:columns-3 md:columns-4 gap-4 ">
-        {data.map((el) => (
-          <div className="flex flex-col justify-center items-center grow-1">
-            <div className="break-inside-avoid w-full mb-[10px] border-2 rounded-2xl text-center">
+    <LayoutHeader>
+      <div className="text-center mb-12">
+        <h1 className="text-4xl font-extrabold">Projects</h1>
+        <p className="text-gray-600 mt-2">{data.length} Project{data.length > 1 && "s"}</p>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-4 md:px-12">
+        {data.map((el, index) => (
+          <div
+            key={index}
+            className="bg-white border border-gray-200 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300"
+          >
+            <a href={el.href} target="_blank" rel="noopener noreferrer">
               <img
-                className="max-w-full rounded-xl hover:opacity-80 hover:cursor-pointer transition-opacity"
-                alt="user image"
                 src={el.image}
+                alt={el.name}
+                className="w-full h-80 object-cover rounded-t-2xl hover:opacity-80 transition-opacity"
               />
-            </div>
-            <div>
-              <h1 className="font-bold">{el.name}</h1>
-            </div>
+              <div className="p-4 text-center">
+                <h3 className="text-lg font-semibold text-gray-800">{el.name}</h3>
+              </div>
+            </a>
           </div>
         ))}
       </div>
-    </>
+    </LayoutHeader>
   );
 };
 

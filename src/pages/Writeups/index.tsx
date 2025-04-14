@@ -1,22 +1,26 @@
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 import Markdown from "https://esm.sh/react-markdown@10";
 import { LayoutHeader } from "../../Header/index.tsx";
 import writeupsJson from "../../writeups.json" with { type: "json" };
 
 function Writeups() {
-  const [selectedId, setSelectedId] = useState(writeupsJson.directories[0].id);
+  const [selectedId, setSelectedId] = useState<number | null>(null);
 
   const selectedWriteup = writeupsJson.directories.find((w) => w.id === selectedId);
+
+  const sortedWriteups = writeupsJson.directories.sort((a, b) => new Date(b.birthtime).getTime() - new Date(a.birthtime).getTime());
   const markdown = selectedWriteup?.markdown || "";
 
   return (
     <LayoutHeader>
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 p-4">
+      <div className="grid grid-cols-1 gap-6 p-4">
         {/* Sidebar */}
-        <aside className="md:col-span-1">
+        {
+          !selectedId && (
+        <center className="md:col-span-1">
           <h2 className="text-2xl font-bold mb-4">Writeups</h2>
           <nav className="flex flex-col gap-3 border-l-2 border-gray-200 pl-4 max-h-[var(--screen-no-header)] overflow-auto">
-            {writeupsJson.directories.map((writeup) => (
+            {sortedWriteups.map((writeup) => (
               <button
               type="button"
                 key={writeup.id}
@@ -27,23 +31,33 @@ function Writeups() {
                     : ""
                 }`}
               >
+                <SmallText>{writeup.birthtime}</SmallText>
                 <h3 className="text-lg">{writeup.name}</h3>
-                {writeup.description && (
-                  <p className="text-sm font-normal text-gray-500 text-ellipsis overflow-hidden">{writeup.description}</p>
-                )}
+                <SmallText>{writeup.description}</SmallText>
               </button>
             ))}
           </nav>
-        </aside>
+        </center>
+          )
+        }
 
-        {/* Markdown Content */}
-        <section className="md:col-span-3 p-6 rounded-xl shadow-md overflow-auto prose prose-invert dark:prose-invert max-w-none">
+        {
+          selectedId && (
+        <section className="md:col-span-3 overflow-auto max-w-none">
           <h1 className="text-3xl font-bold mb-4">{selectedWriteup?.name}</h1>
           <Markdown>{markdown}</Markdown>
         </section>
+          )
+        }
       </div>
     </LayoutHeader>
   );
 }
+
+const SmallText = ({ children }: { children: ReactNode }) => {
+  return (
+  <p className="text-sm font-normal text-gray-500 text-ellipsis overflow-hidden">{children}</p>
+  )
+};
 
 export default Writeups;

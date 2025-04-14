@@ -1,5 +1,4 @@
 // Building writeups JSON in order to use it statically
-
 type ResultJSON = {
   directories: DirectoryWithMarkdown[];
 };
@@ -9,6 +8,7 @@ type DirectoryWithMarkdown = {
   name: string;
   markdown: string;
   description: string;
+  birthtime: string;
 };
 
 const basePath = "./docs/";
@@ -27,11 +27,16 @@ for await (const markdownDirectory of markdownDirectories) {
       `${basePath}${markdownDirectory.name}/index.md`,
     );
 
+    const { birthtime } = Deno.statSync(
+      `${basePath}${markdownDirectory.name}/index.md`,
+    );
+
     directories.push({
       id: directories.length + 1,
       name: markdownDirectory.name,
       markdown: textFile,
       description: textFile.substring(0, 100),
+      birthtime: birthtime?.toDateString() || "",
     });
   }
 }

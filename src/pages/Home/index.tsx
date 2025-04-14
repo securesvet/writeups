@@ -34,11 +34,15 @@ const Avatar = () => {
 
 const Greeting = () => {
   return (
-    <h1>
-      Hi, my name is
-      <br /> <MagneticText text="Sviatoslav" />
-      <MagneticText text="Murzin" startBold />
-    </h1>
+    <>
+      <p className="text-3xl"> Hi, my name is</p>
+      <h2>
+        <MagneticText text="Sviatoslav" />
+      </h2>
+      <h2>
+        <MagneticText text="Murzin" startBold />
+      </h2>
+    </>
   );
 };
 
