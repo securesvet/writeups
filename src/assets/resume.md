@@ -8,15 +8,11 @@
 - **Website:** [mursvet.ru](https://mursvet.ru)  
 - **GitHub:** [github.com/securesvet](https://github.com/securesvet)  
 
----
-
 ## Стек  
 - HTML, CSS, JavaScript, TypeScript  
 - React, Redux, Next.js  
 - Node.js, Webpack, Vite  
 - CI/CD, Docker  
-
----
 
 ## Pet-проекты  
 Все пет-проекты можно найти на:  
@@ -25,9 +21,8 @@
 
 **Текущие проекты:**  
 - [github.com/securesvet/heroed](https://github.com/securesvet/heroed)  
+- [github.com/securesvet/writeups](https://github.com/securesvet/writeups)  
 - [github.com/securesvet/murme](https://github.com/securesvet/murme)  
-
----
 
 ## Опыт работы  
 
@@ -43,8 +38,6 @@
 **Май 2024 – Июнь 2024**  
 - Создание React компонентов для кита  
 - Работа с Web Audio API для создания аудиоплеера  
-
----
 
 ## Образование  
 

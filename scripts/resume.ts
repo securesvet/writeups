@@ -6,7 +6,7 @@ import { mdToPdf } from "npm:md-to-pdf";
   );
 
   if (pdf) {
-    Deno.writeFileSync("./src/assets/resume.pdf", pdf.content);
+    Deno.writeFileSync("./public/resume.pdf", pdf.content);
     console.log("PDF created");
   } else {
     console.log("PDF not created");
