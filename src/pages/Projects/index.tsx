@@ -50,7 +50,6 @@ const Projects = () => {
       description: "This website hosted on Github Pages",
       href: "https://securesvet.github.io/writeups/",
       githubUrl: "https://github.com/securesvet/writeups",
-      // deno-lint-ignore jsx-key
       stack: [<ReactColorIcon />, <DenoColorIcon />, <ViteSvgColorIcon />],
     },
     {
