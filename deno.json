@@ -1,14 +1,17 @@
 {
   "tasks": {
     "scriptbuild": "deno run -RW ./scripts/index.ts",
-    "pdfresume": "deno run -A ./scripts/resume.ts",
+    "pdfresume": "npx is-ci && deno run -A ./scripts/resume.ts",
+    "prepare": {
+      "dependencies": ["scriptbuild", "pdfresume"]
+    },
     "dev": {
       "command": "deno run -A --node-modules-dir npm:vite",
-      "dependencies": ["scriptbuild"]
+      "dependencies": ["prepare"]
     },
     "build": {
       "command": "deno run -A --node-modules-dir npm:vite build",
-      "dependencies": ["scriptbuild"]
+      "dependencies": ["prepare"]
     },
     "preview": "deno run -A --node-modules-dir npm:vite preview",
     "serve": "deno run --allow-net --allow-read jsr:@std/http@1/file-server dist/"
@@ -37,6 +40,8 @@
     "react-router": "npm:react-router@^7.5.0",
     "react-router-dom": "npm:react-router-dom@^7.5.0",
     "tailwindcss": "npm:tailwindcss@^4.1.3",
+    "unplugin-tailwindcss-mangle": "npm:unplugin-tailwindcss-mangle@^4.1.0",
+    "tailwindcss-patch": "npm:tailwindcss-patch@^7.1.0",
     "vite": "npm:vite@^6.1.1"
   }
 }
