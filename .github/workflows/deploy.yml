@@ -44,7 +44,7 @@ jobs:
     if: github.ref == 'refs/heads/main'
     environment:
       name: github-pages
-      url: https://securesvet.github.io/writeups/
+      url: https://mursvet.ru
 
     steps:
       - name: Download artifact
