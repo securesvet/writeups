@@ -1,9 +1,9 @@
 {
   "tasks": {
     "scriptbuild": "deno run -RW ./scripts/index.ts",
-    "pdfresume": "deno run -A ./scripts/resume.ts",
+    "pdfresume": "npx is-not-ci && deno run -A ./scripts/resume.ts",
     "prepare": {
-      "dependencies": ["scriptbuild"]
+      "dependencies": ["scriptbuild", "pdfresume"]
     },
     "dev": {
       "command": "deno run -A --node-modules-dir npm:vite",
@@ -33,6 +33,7 @@
     "@types/react-dom": "npm:@types/react-dom@^19.0.4",
     "@vitejs/plugin-react-swc": "npm:@vitejs/plugin-react-swc@^3.8.0",
     "framer-motion": "npm:framer-motion@^12.6.3",
+    "is-not-ci": "npm:is-not-ci@^1.0.0",
     "path": "npm:path@^0.12.7",
     "react": "npm:react@^19.0.0",
     "react-dom": "npm:react-dom@^19.0.0",
