@@ -12,11 +12,6 @@
   <body>
     <div id="root"></div>
     <script>
-      if (sessionStorage.redirect) {
-        const redirect = sessionStorage.redirect;
-        sessionStorage.removeItem("redirect");
-        history.replaceState(null, null, redirect);
-      }
     </script>
   </body>
 </html>
