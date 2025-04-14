@@ -1,9 +1,9 @@
 {
   "tasks": {
     "scriptbuild": "deno run -RW ./scripts/index.ts",
-    "pdfresume": "npx is-ci && deno run -A ./scripts/resume.ts",
+    "pdfresume": "deno run -A ./scripts/resume.ts",
     "prepare": {
-      "dependencies": ["scriptbuild", "pdfresume"]
+      "dependencies": ["scriptbuild"]
     },
     "dev": {
       "command": "deno run -A --node-modules-dir npm:vite",
