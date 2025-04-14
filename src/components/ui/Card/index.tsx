@@ -8,7 +8,7 @@ export type CardProps = {
 };
 const Card = ({ href, image, name, description, children }: CardProps) => {
   return (
-    <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl shadow-xl hover:shadow-2xl transition-shadow duration-300 p-1">
+    <div className="bg-white/10 border border-white/20 rounded-2xl shadow-lg hover:shadow-[0px_0px_15px_15px_rgba(0,0,0,0.1)] transition-shadow duration-300 p-1">
       <a href={href} target="_blank" rel="noopener noreferrer">
         <img
           src={image}
