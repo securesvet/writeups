@@ -1,4 +1,3 @@
-// deno-lint-ignore-file jsx-key
 import mursvet from "/projects/mursvet.png";
 import heroed from "/projects/heroed.png";
 import tbank from "/projects/tbank.png";
@@ -48,9 +47,14 @@ const Projects = () => {
       name: "mursvet site",
       image: mursvet,
       description: "This website hosted on Github Pages",
-      href: "https://securesvet.github.io/writeups/",
+      href: "https://mursvet.ru",
       githubUrl: "https://github.com/securesvet/writeups",
-      stack: [<ReactColorIcon />, <DenoColorIcon />, <ViteSvgColorIcon />],
+      stack: [
+        <ReactColorIcon key="react" />,
+        <NodeJsColorIcon key="nodejs" />,
+        <DenoColorIcon key="deno" />,
+        <ViteSvgColorIcon key="vite" />,
+      ],
     },
     {
       name: "Heroed",
@@ -59,10 +63,10 @@ const Projects = () => {
       href: "https://securesvet.github.io/heroed/",
       githubUrl: "https://github.com/securesvet/heroed",
       stack: [
-        <ReactColorIcon />,
-        <NodeJsColorIcon />,
-        <ViteSvgColorIcon />,
-        <ReduxSvgColorIcon />,
+        <ReactColorIcon key="react" />,
+        <NodeJsColorIcon key="nodejs" />,
+        <ViteSvgColorIcon key="vite" />,
+        <ReduxSvgColorIcon key="redux" />,
       ],
     },
     {
@@ -121,7 +125,7 @@ const ProjectCard = ({
       ) : (
         <p>Closed source</p>
       )}
-      <div className="flex justify-center items-center gap-2">{stack}</div>
+      <div className="flex justify-center mt-2 items-center gap-2">{stack}</div>
     </Card>
   );
 };

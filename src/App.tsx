@@ -12,6 +12,7 @@ import Writeups from "./pages/Writeups/index.tsx";
 import Resume from "./pages/Resume/index.tsx";
 import NotFound from "./pages/NotFound/index.tsx";
 import Projects from "./pages/Projects/index.tsx";
+import SingleWriteup from "./pages/SingleWriteup/index.tsx";
 
 const Layout = () => {
   return (
@@ -26,20 +27,16 @@ const Layout = () => {
 };
 
 const router = createBrowserRouter(
-
   createRoutesFromElements(
-    <>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="/writeups" element={<Writeups />} />
-        {/* <Route path="/writeups" element={<Writeups />} /> */}
-        <Route path="/resume" element={<Resume />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path='*' element={<NotFound />} />
-      </Route>
-    </>
+    <Route path="/" element={<Layout />}>
+      <Route index element={<Home />} />
+      <Route path="writeups" element={<Writeups />} />
+      <Route path="writeups/:id" element={<SingleWriteup />} />
+      <Route path="resume" element={<Resume />} />
+      <Route path="projects" element={<Projects />} />
+      <Route path="*" element={<NotFound />} />
+    </Route>
   ),
-  { basename: "/writeups/" }
 );
 
 function App() {
