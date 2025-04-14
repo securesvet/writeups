@@ -6,7 +6,7 @@ import resumePDFurl from "/resume.pdf?url";
 const Resume = () => {
   return (
     <LayoutHeader>
-      <h1 className="text-center text-3xl font-bold">Resume</h1>
+      <h2 className="text-center">Resume</h2>
       <div className="text-center mb-6">
         <a href={resumePDFurl}>PDF</a>
       </div>

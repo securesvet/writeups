@@ -4,21 +4,18 @@ import MountTransition from "../../components/transitions/MountTransition.tsx";
 
 const Home = () => {
   return (
-    <>
-      <section id="greet">
-        <div className="flex justify-center items-center h-screen">
-          <MountTransition>
-            <Greeting />
-          </MountTransition>
-          <div
-            className={`w-xs aspect-square hover:opacity-80 transition-opacity duration-300`}
-          >
-            <Avatar />
-          </div>
+    <section id="greet">
+      <div className="flex justify-center items-center h-[var(--screen-no-header-no-footer)]">
+        <MountTransition>
+          <Greeting />
+        </MountTransition>
+        <div
+          className={`w-xs aspect-square hover:opacity-80 transition-opacity duration-300`}
+        >
+          <Avatar />
         </div>
-      </section>
-      <section id="projects">{/* <Projects /> */}</section>
-    </>
+      </div>
+    </section>
   );
 };
 

@@ -9,8 +9,8 @@ const sortedWriteups = writeupsJson.directories.sort(
 function Writeups() {
   return (
     <LayoutHeader>
-      <div className="p-4 max-w-3xl mx-auto">
-        <h2 className="text-3xl font-bold mb-6 text-center">Writeups</h2>
+      <div className="max-w-3xl mx-auto">
+        <h2 className="mb-6 text-center">Writeups</h2>
         <nav className="flex flex-col gap-4">
           {sortedWriteups.map((writeup) => (
             <Link
