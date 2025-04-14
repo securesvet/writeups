@@ -16,7 +16,8 @@
     "lib": ["deno.ns", "ES2020", "DOM", "DOM.Iterable"],
     "jsx": "react-jsx",
     "jsxImportSource": "react",
-    "jsxImportSourceTypes": "@types/react"
+    "jsxImportSourceTypes": "@types/react",
+    "types": ["vite-plugin-svgr/client"]
   },
   "nodeModulesDir": "auto",
   "imports": {
