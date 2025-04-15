@@ -1,9 +1,4 @@
-import {
-  useRef,
-  useState,
-  type MouseEvent,
-  type TouchEvent,
-} from "react";
+import { type MouseEvent, type TouchEvent, useRef, useState } from "react";
 
 type MagneticTextType = {
   text: string;
@@ -20,7 +15,7 @@ const MagneticText = ({
   const minWeight = 100;
   const containerRef = useRef<HTMLDivElement>(null);
   const [weights, setWeights] = useState<number[]>(
-    new Array(text.length).fill(startBold ? maxWeight : minWeight)
+    new Array(text.length).fill(startBold ? maxWeight : minWeight),
   );
 
   const handleInteractionMove = (x: number, y: number) => {

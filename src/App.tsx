@@ -1,9 +1,9 @@
 import Footer from "./Footer/index.tsx";
 import Header from "./Header/index.tsx";
 import {
-  Route,
   createBrowserRouter,
   createRoutesFromElements,
+  Route,
   RouterProvider,
 } from "react-router-dom";
 import { Outlet } from "react-router-dom";
@@ -35,7 +35,7 @@ const router = createBrowserRouter(
       <Route path="resume" element={<Resume />} />
       <Route path="projects" element={<Projects />} />
       <Route path="*" element={<NotFound />} />
-    </Route>
+    </Route>,
   ),
 );
 

@@ -3,7 +3,7 @@ import { LayoutHeader } from "../../Header/index.tsx";
 import writeupsJson from "../../writeups.json" with { type: "json" };
 
 const sortedWriteups = writeupsJson.directories.sort(
-  (a, b) => new Date(b.birthtime).getTime() - new Date(a.birthtime).getTime()
+  (a, b) => new Date(b.birthtime).getTime() - new Date(a.birthtime).getTime(),
 );
 
 function Writeups() {

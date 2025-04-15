@@ -32,7 +32,7 @@ const Avatar = () => {
 const Greeting = () => {
   return (
     <>
-      <p className="text-3xl"> Hi, my name is</p>
+      <p className="text-3xl">Hi, my name is</p>
       <h2>
         <MagneticText text="Sviatoslav" />
       </h2>

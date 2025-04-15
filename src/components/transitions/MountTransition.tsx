@@ -1,4 +1,4 @@
-import { useEffect, useState, ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
 
 type MountTransitionProps = {
   children: ReactNode;
@@ -6,7 +6,9 @@ type MountTransitionProps = {
   className?: string;
 };
 
-const MountTransition = ({ children, delay = 100, className = "" }: MountTransitionProps) => {
+const MountTransition = (
+  { children, delay = 100, className = "" }: MountTransitionProps,
+) => {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {

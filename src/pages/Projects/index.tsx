@@ -3,7 +3,7 @@ import heroed from "/projects/heroed.png";
 import tbank from "/projects/tbank.png";
 import { LayoutHeader } from "../../Header/index.tsx";
 import Card, { CardProps } from "../../components/ui/Card/index.tsx";
-import { FaGithub, FaReact, FaNodeJs } from "react-icons/fa";
+import { FaGithub, FaNodeJs, FaReact } from "react-icons/fa";
 import ViteSvg from "../../assets/images/vite.svg?react";
 import ReduxSvg from "../../assets/images/redux.svg?react";
 import { SiDeno } from "react-icons/si";
@@ -112,19 +112,19 @@ const ProjectCard = ({
 }: { githubUrl?: string; stack?: ReactNode[] } & CardProps) => {
   return (
     <Card {...props}>
-      {githubUrl ? (
-        <a
-          href={githubUrl}
-          target="_blank"
-          className="mt-2 inline-block hover:underline items-center"
-        >
-          <div className="flex items-center gap-2 justify-center">
-            <FaGithub className="inline" /> Github
-          </div>
-        </a>
-      ) : (
-        <p>Closed source</p>
-      )}
+      {githubUrl
+        ? (
+          <a
+            href={githubUrl}
+            target="_blank"
+            className="mt-2 inline-block hover:underline items-center"
+          >
+            <div className="flex items-center gap-2 justify-center">
+              <FaGithub className="inline" /> Github
+            </div>
+          </a>
+        )
+        : <p>Closed source</p>}
       <div className="flex justify-center mt-2 items-center gap-2">{stack}</div>
     </Card>
   );

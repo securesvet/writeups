@@ -14,6 +14,7 @@ type DirectoryWithMarkdown = {
   markdown: string;
   description: string;
   birthtime: string;
+  lastEdited: string;
 };
 
 const basePath = "./docs/";
@@ -32,7 +33,7 @@ for await (const markdownDirectory of markdownDirectories) {
       `${basePath}${markdownDirectory.name}/index.md`,
     );
 
-    const { birthtime } = Deno.statSync(
+    const { birthtime, ctime } = Deno.statSync(
       `${basePath}${markdownDirectory.name}/index.md`,
     );
 
@@ -42,6 +43,7 @@ for await (const markdownDirectory of markdownDirectories) {
       markdown: textFile,
       description: textFile.substring(0, 100),
       birthtime: birthtime?.toDateString() || "",
+      lastEdited: ctime?.toDateString() || "",
     });
   }
 }
@@ -51,4 +53,4 @@ const result: ResultJSON = {
 };
 
 const writeupsJson = JSON.stringify(result);
-Deno.writeTextFileSync("./src/writeups.json", writeupsJson);
+Deno.writeTextFileSync("./public/writeups.json", writeupsJson);
