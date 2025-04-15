@@ -10,8 +10,9 @@ type ResultJSON = {
 
 type DirectoryWithMarkdown = {
   id: number;
+  isMDX: boolean;
   name: string;
-  markdown: string;
+  content: string;
   description: string;
   birthtime: string;
   lastEdited: string;
@@ -39,8 +40,9 @@ for await (const markdownDirectory of markdownDirectories) {
 
     directories.push({
       id: directories.length + 1,
+      isMDX: false,
       name: markdownDirectory.name,
-      markdown: textFile,
+      content: textFile,
       description: textFile.substring(0, 100),
       birthtime: birthtime?.toDateString() || "",
       lastEdited: ctime?.toDateString() || "",
@@ -53,4 +55,4 @@ const result: ResultJSON = {
 };
 
 const writeupsJson = JSON.stringify(result);
-Deno.writeTextFileSync("./public/writeups.json", writeupsJson);
+Deno.writeTextFileSync("./src/assets/writeups.json", writeupsJson);

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { LayoutHeader } from "../../Header/index.tsx";
-import writeupsJson from "../../writeups.json" with { type: "json" };
+import writeupsJson from "../../assets/writeups.json" with { type: "json" };
 
 const sortedWriteups = writeupsJson.directories.sort(
   (a, b) => new Date(b.birthtime).getTime() - new Date(a.birthtime).getTime(),

@@ -12,7 +12,9 @@ const Resume = () => {
       </div>
       <div className="flex justify-center">
         <article className="prose dark:prose-invert">
-          <Markdown>{resume}</Markdown>
+          <Markdown>
+            {resume}
+          </Markdown>
         </article>
       </div>
     </LayoutHeader>
