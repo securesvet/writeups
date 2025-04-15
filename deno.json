@@ -1,11 +1,11 @@
 {
   "tasks": {
     "scriptbuild": "deno run -RW ./scripts/index.ts",
-    "pdfresume": "npx is-not-ci && deno run -A ./scripts/resume.ts || echo ''",
-    "prepare": {
-      "dependencies": ["scriptbuild", "pdfresume"]
-    },
+    "pdfresume": "deno run -A ./scripts/resume.ts",
     "tw-patch": "npx tw-patch install && npx tw-patch extract",
+    "prepare": {
+      "dependencies": ["scriptbuild", "tw-patch"]
+    },
     "dev": {
       "command": "deno run -A --node-modules-dir npm:vite",
       "dependencies": ["prepare"]
