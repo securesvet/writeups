@@ -39,6 +39,7 @@
     "@vitejs/plugin-react-swc": "npm:@vitejs/plugin-react-swc@^3.8.0",
     "framer-motion": "npm:framer-motion@^12.6.3",
     "is-not-ci": "npm:is-not-ci@^1.0.0",
+    "md-to-pdf": "npm:md-to-pdf@^5.2.4",
     "path": "npm:path@^0.12.7",
     "react": "npm:react@^19.0.0",
     "react-dom": "npm:react-dom@^19.0.0",

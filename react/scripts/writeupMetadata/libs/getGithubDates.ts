@@ -16,7 +16,6 @@ async function getGitHubDates(
     `https://api.github.com/repos/${owner}/${repo}/commits?path=${path}`;
 
   const res = await fetch(url, { headers });
-  console.log(res);
   if (!res.ok) {
     console.error(`GitHub API error for ${path}:`, res.statusText);
     return { created: "", updated: "", author: "" };
