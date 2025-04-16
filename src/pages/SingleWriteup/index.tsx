@@ -31,7 +31,7 @@ function SingleWriteup() {
         <div className="flex w-full justify-end">
           <div className="flex flex-col gap-2">
             <p className="text-sm text-gray-400">
-              Last edited on {writeup.lastEdited}
+              Last edited on {writeup.lastEdited} by {writeup.author}
             </p>
             <a
               className="hover:underline text-sm text-gray-400 flex justify-end items-center gap-1"

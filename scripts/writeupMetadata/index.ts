@@ -1,8 +1,5 @@
 // Building writeups JSON in order to use it statically
-
-// import createResumePDF from "./resume.ts";
-
-// await createResumePDF();
+import getGitHubDates from "./libs/getGithubDates.ts";
 
 type ResultJSON = {
   directories: DirectoryWithMarkdown[];
@@ -10,6 +7,7 @@ type ResultJSON = {
 
 type DirectoryWithMarkdown = {
   id: number;
+  author: string;
   title: string;
   isMDX: boolean;
   name: string;
@@ -81,11 +79,11 @@ for await (const markdownDirectory of markdownDirectories) {
       `${basePath}${markdownDirectory.name}/index.md`,
     );
 
-    const { birthtime, ctime } = Deno.statSync(
-      `${basePath}${markdownDirectory.name}/index.md`,
+    const { created: birthtime, updated: ctime, author } = await getGitHubDates(
+      "securesvet",
+      "writeups",
+      "docs/" + markdownDirectory.name + "/index.md",
     );
-
-    console.log(getFrontmatter(textMd));
 
     const textNoFronmatter = getMarkdownNoFrontmatter(textMd);
     directories.push({
@@ -95,8 +93,9 @@ for await (const markdownDirectory of markdownDirectories) {
       name: markdownDirectory.name,
       content: textNoFronmatter,
       description: textNoFronmatter.substring(0, 100),
-      birthtime: birthtime?.toDateString() || "",
-      lastEdited: ctime?.toDateString() || "",
+      birthtime: birthtime,
+      lastEdited: ctime,
+      author,
     });
   }
 }

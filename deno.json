@@ -1,6 +1,6 @@
 {
   "tasks": {
-    "genblog": "deno run -RW ./scripts/index.ts",
+    "genblog": "deno run -RWEN ./scripts/writeupMetadata/index.ts --env-file=.env",
     "pdfresume": "deno run -A ./scripts/resume.ts",
     "tw-patch": "npx tw-patch install && npx tw-patch extract",
     "prepare": {

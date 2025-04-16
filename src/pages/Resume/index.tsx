@@ -11,7 +11,7 @@ const Resume = () => {
         <a href={resumePDFurl}>PDF</a>
       </div>
       <div className="flex justify-center">
-        <article className="prose dark:prose-invert">
+        <article className="prose">
           <Markdown>
             {resume}
           </Markdown>

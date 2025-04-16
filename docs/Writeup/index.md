@@ -1,3 +1,5 @@
-# AES CBC
+---
+title: AES CBC
+---
 
 AES CBC
