@@ -1,11 +1,12 @@
-import mursvet from "/projects/mursvet.png";
-import heroed from "/projects/heroed.png";
-import tbank from "/projects/tbank.png";
+import mursvet from "/projects/mursvet.webp";
+import heroed from "/projects/heroed.webp";
+import tbank from "/projects/tbank.webp";
 import { LayoutHeader } from "../../Header/index.tsx";
 import Card, { CardProps } from "../../components/ui/Card/index.tsx";
 import { FaGithub, FaNodeJs, FaReact } from "react-icons/fa";
 import ViteSvg from "../../assets/images/vite.svg?react";
 import ReduxSvg from "../../assets/images/redux.svg?react";
+import BabelSvg from "../../assets/images/babel.svg?react";
 import { SiDeno } from "react-icons/si";
 import { ReactNode } from "react";
 import { IconContext } from "react-icons";
@@ -41,6 +42,10 @@ const ReduxSvgColorIcon = () => {
   return <ReduxSvg width={20} height={20} />;
 };
 
+const BableSvgColorIcon = () => {
+  return <BabelSvg width={20} height={20} />;
+};
+
 const Projects = () => {
   const data = [
     {
@@ -54,6 +59,7 @@ const Projects = () => {
         <NodeJsColorIcon key="nodejs" />,
         <DenoColorIcon key="deno" />,
         <ViteSvgColorIcon key="vite" />,
+        <BableSvgColorIcon key="babel" />,
       ],
     },
     {

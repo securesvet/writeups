@@ -7,6 +7,7 @@
     "npm:@mdx-js/react@^3.1.0": "3.1.0_@types+react@19.1.2_react@19.1.0",
     "npm:@mdx-js/rollup@^3.1.0": "3.1.0_rollup@4.40.0",
     "npm:@react-router/dev@^7.5.0": "7.5.0_react-router@7.5.0__react@19.1.0__react-dom@19.1.0___react@19.1.0_vite@6.2.6_@babel+core@7.26.10_react@19.1.0_react-dom@19.1.0__react@19.1.0_@types+node@22.12.0",
+    "npm:@rollup/plugin-babel@^6.0.4": "6.0.4_@babel+core@7.26.10",
     "npm:@tailwindcss/typography@~0.5.16": "0.5.16_tailwindcss@4.1.4",
     "npm:@tailwindcss/vite@*": "4.1.4_vite@6.2.6_@types+node@22.12.0",
     "npm:@tailwindcss/vite@^4.1.3": "4.1.4_vite@6.2.6_@types+node@22.12.0",
@@ -32,6 +33,7 @@
     "npm:unplugin-tailwindcss-mangle@*": "4.1.0",
     "npm:unplugin-tailwindcss-mangle@^4.1.0": "4.1.0",
     "npm:vite-plugin-svgr@*": "4.3.0_vite@6.2.6__@types+node@22.12.0_@svgr+core@8.1.0__@babel+core@7.26.10_@types+node@22.12.0",
+    "npm:vite-plugin-svgr@^4.3.0": "4.3.0_vite@6.2.6__@types+node@22.12.0_@svgr+core@8.1.0__@babel+core@7.26.10_@types+node@22.12.0",
     "npm:vite@*": "6.2.6_@types+node@22.12.0",
     "npm:vite@^6.1.1": "6.2.6_@types+node@22.12.0"
   },
@@ -585,6 +587,14 @@
         "source-map-support",
         "stream-slice",
         "undici"
+      ]
+    },
+    "@rollup/plugin-babel@6.0.4_@babel+core@7.26.10": {
+      "integrity": "sha512-YF7Y52kFdFT/xVSuVdjkV5ZdX/3YtmX0QulG+x0taQOtJdHYzVU61aSSkAgVJ7NOv6qPkIYiJSgSWWN/DM5sGw==",
+      "dependencies": [
+        "@babel/core",
+        "@babel/helper-module-imports",
+        "@rollup/pluginutils"
       ]
     },
     "@rollup/pluginutils@5.1.4_rollup@4.40.0": {
@@ -3765,6 +3775,7 @@
       "npm:@mdx-js/react@^3.1.0",
       "npm:@mdx-js/rollup@^3.1.0",
       "npm:@react-router/dev@^7.5.0",
+      "npm:@rollup/plugin-babel@^6.0.4",
       "npm:@tailwindcss/typography@~0.5.16",
       "npm:@tailwindcss/vite@^4.1.3",
       "npm:@types/mdx@^2.0.13",
@@ -3782,6 +3793,7 @@
       "npm:tailwindcss-patch@^7.1.0",
       "npm:tailwindcss@^4.1.3",
       "npm:unplugin-tailwindcss-mangle@^4.1.0",
+      "npm:vite-plugin-svgr@^4.3.0",
       "npm:vite@^6.1.1"
     ]
   }

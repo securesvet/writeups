@@ -20,8 +20,8 @@ function SingleWriteup() {
 
   return (
     <LayoutHeader>
-      <div className=" p-6 max-w-4xl mx-auto">
-        <h1>{writeup.name}</h1>
+      <div className="p-6 max-w-4xl mx-auto">
+        <h1>{writeup.title}</h1>
         <p className="text-sm text-gray-400">{writeup.birthtime}</p>
         <div className="prose dark:prose-invert">
           <Markdown>

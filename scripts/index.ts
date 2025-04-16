@@ -10,6 +10,7 @@ type ResultJSON = {
 
 type DirectoryWithMarkdown = {
   id: number;
+  title: string;
   isMDX: boolean;
   name: string;
   content: string;
@@ -17,6 +18,52 @@ type DirectoryWithMarkdown = {
   birthtime: string;
   lastEdited: string;
 };
+
+type FrontmatterType = {
+  title: string;
+};
+
+function getFrontmatter(text: string): Partial<FrontmatterType> {
+  const lines = text.split("\n");
+  const frontmatter: Record<string, string> = {};
+  let isFrontmatter = false;
+
+  for (const line of lines) {
+    if (line === "---") {
+      isFrontmatter = !isFrontmatter;
+      continue;
+    }
+
+    if (isFrontmatter) {
+      const [key, value] = line.split(": ");
+      frontmatter[key] = value;
+    } else {
+      break;
+    }
+  }
+  return frontmatter as FrontmatterType;
+}
+
+function getMarkdownNoFrontmatter(text: string): string {
+  const lines = text.split("\n");
+  let isFrontmatter = false;
+
+  let i = 0;
+  for (; i < lines.length; i++) {
+    if (lines[i] === "---") {
+      isFrontmatter = !isFrontmatter;
+      continue;
+    }
+
+    if (isFrontmatter) {
+      continue;
+    } else {
+      break;
+    }
+  }
+
+  return lines.slice(i).join("\n");
+}
 
 const basePath = "./docs/";
 
@@ -30,7 +77,7 @@ const directories: DirectoryWithMarkdown[] = [];
 
 for await (const markdownDirectory of markdownDirectories) {
   if (markdownDirectory.isDirectory) {
-    const textFile = await Deno.readTextFile(
+    const textMd = await Deno.readTextFile(
       `${basePath}${markdownDirectory.name}/index.md`,
     );
 
@@ -38,12 +85,16 @@ for await (const markdownDirectory of markdownDirectories) {
       `${basePath}${markdownDirectory.name}/index.md`,
     );
 
+    console.log(getFrontmatter(textMd));
+
+    const textNoFronmatter = getMarkdownNoFrontmatter(textMd);
     directories.push({
       id: directories.length + 1,
+      title: getFrontmatter(textMd).title ?? markdownDirectory.name,
       isMDX: false,
       name: markdownDirectory.name,
-      content: textFile,
-      description: textFile.substring(0, 100),
+      content: textNoFronmatter,
+      description: textNoFronmatter.substring(0, 100),
       birthtime: birthtime?.toDateString() || "",
       lastEdited: ctime?.toDateString() || "",
     });

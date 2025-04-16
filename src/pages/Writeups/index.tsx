@@ -19,7 +19,7 @@ function Writeups() {
               className="block rounded-lg border border-gray-200 p-4 hover:bg-gray-400 transition"
             >
               <p className="text-sm text-gray-500">{writeup.birthtime}</p>
-              <h3 className="text-xl font-semibold">{writeup.name}</h3>
+              <h3 className="text-xl font-semibold">{writeup.title}</h3>
               {writeup.description && (
                 <p className="text-sm text-gray-600">{writeup.description}</p>
               )}

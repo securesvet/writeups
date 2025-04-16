@@ -1,6 +1,7 @@
 import MagneticText from "../../components/ui/MagneticText/index.tsx";
 import Blob from "../../components/ui/Blob/index.tsx";
 import MountTransition from "../../components/transitions/MountTransition.tsx";
+import me from '/me.webp?url'
 
 const Home = () => {
   return (
@@ -20,11 +21,10 @@ const Home = () => {
 };
 
 const Avatar = () => {
-  const githubImageUrl = "https://github.com/securesvet.png";
   const githubUrl = "https://github.com/securesvet";
   return (
     <a href={githubUrl} target="_blank">
-      <Blob imageUrl={githubImageUrl} />
+      <Blob imageUrl={me} />
     </a>
   );
 };
